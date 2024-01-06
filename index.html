@@ -2,23 +2,24 @@
 <html lang="zh-Hans">
 
 <head>
-    
-        
+
+
     <meta charset="UTF-8" name="viewport" content="width=device-width" />
     <title>ZSF Team</title>
     <link rel="shortcut icon" href="images/logo.png">
 </head>
 
 <body>
-    <img id="logo" src="images/logo.png" width="200" height="200" />
+    <img id="logo" alt="ZSF Team Logo" src="images/logo.png" draggable="false" width="200" height="200"
+        onmousedown="logoOnMouseDown(event)" onmouseup="logoOnMouseUp(event)" />
     <h1 id="title">
         <div>欢迎来到</div>
-        <div>ZSF Team官方网站!祝大家新年快乐！</div>
+        <div>ZSF Team官方网站！祝大家新年快乐！</div>
     </h1>
-<audio controls>
-  <source src="images/M5000046gmLI4JxFkg.mp3" type="audio/ogg">
-  <source src="images/M5000046gmLI4JxFkg.mp3" type="audio/mpeg">
-</audio>
+    <audio controls>
+        <source src="images/M5000046gmLI4JxFkg.mp3" type="audio/ogg">
+        <source src="images/M5000046gmLI4JxFkg.mp3" type="audio/mpeg">
+    </audio>
 
     <div id="contentContainer">
         <h2>关于我们</h2>
@@ -37,56 +38,66 @@
         <a href="mailto:zzxpppp@126.com">发送邮件到 zzxpppp@126.com</a>
         <p>请选择网易邮箱大师(已测试可打开)或QQ邮箱打开(不推荐用windows自带邮箱)</p>
         <h2>网站更新历史</h2>
-        <p>                                               ZSF Team团队网站更新历史
-        <p>1月15日
-        <p>1.网页成立</p>
-        <p>1月16日</p>    
-        <p>1.更新UI平滑界面</p>    
-        <p>2.适配夜间插件</p>    
-        <p>3.增加邮件功能</p>    
-       
-        <p>4.团队图片增加</p>
-        <p>5.修复已知问题</p>    
-        <p>1月17日</p>    
-        <p>1.加入更新历史</p>    
-        <p>2.修复问题</p>    
-        <p>3.修改字体</p>    
-        <p>4.修改文字</p>
-        <p>1月18日</p>
-        <p>1.加入视频预告</p>
-        <p>2.加入版权</p>
-        <p>1月21日</p>
-        <p>1.删除登录功能</p>
-        <p>2.增加字符</p>
-        <p>2月5日</p>
-        <p>1.更改视频预告</p>
-        <p>2.增加开学提示</p>
-        <p>3.修复网站小BUG</p>
-        <p>4.更新版权信息和加群文字</p>
-        <p>10月28日</p>
-        <p>1.增加音乐</p>
-        <p>2.更改创作者列表</p>
-        <p>3.更新版权信息</p>
-        <p>4.修改开学信息</p>
-        <p>5.修改视频预告</p>
-        <p>6.修改已知Bug</p>
-        <p>2024年1月1日</p>
-        <p>1.修改文字</p>
-        <p>2.修改开学信息</p>
-        <p>3.修改视频预告</p>
-        <p>4.修改已知Bug</p>
-        <p>Bug反馈:1799815043(QQ)</p>   
-        <h3>最新一期视频预告<h3>
+        <div id="button-showHistory" onclick="showHistory(this)">
+            <div>ZSF Team团队网站更新历史</div>
+            <svg id="icon-showHistory" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:svg="http://www.w3.org/2000/svg">
+                <path fill="#000"
+                    d="m 901.59787,293.0688 a 68.266667,68.266667 0 0 1 0,96.52907 L 560.26453,730.9312 a 68.266667,68.266667 0 0 1 -96.52906,0 L 122.40213,389.59787 A 68.266667,68.266667 0 1 1 218.9312,293.0688 L 512,586.1376 805.0688,293.0688 a 68.266667,68.266667 0 0 1 96.52907,0 z" />
+            </svg>
+        </div>
+        <div id="history">
+            <p>1月15日</p>
+            <p>1.网页成立</p>
+            <p>1月16日</p>
+            <p>1.更新UI平滑界面</p>
+            <p>2.适配夜间插件</p>
+            <p>3.增加邮件功能</p>
+            <p>4.团队图片增加</p>
+            <p>5.修复已知问题</p>
+            <p>1月17日</p>
+            <p>1.加入更新历史</p>
+            <p>2.修复问题</p>
+            <p>3.修改字体</p>
+            <p>4.修改文字</p>
+            <p>1月18日</p>
+            <p>1.加入视频预告</p>
+            <p>2.加入版权</p>
+            <p>1月21日</p>
+            <p>1.删除登录功能</p>
+            <p>2.增加字符</p>
+            <p>2月5日</p>
+            <p>1.更改视频预告</p>
+            <p>2.增加开学提示</p>
+            <p>3.修复网站小BUG</p>
+            <p>4.更新版权信息和加群文字</p>
+            <p>10月28日</p>
+            <p>1.增加音乐</p>
+            <p>2.更改创作者列表</p>
+            <p>3.更新版权信息</p>
+            <p>4.修改开学信息</p>
+            <p>5.修改视频预告</p>
+            <p>6.修改已知Bug</p>
+            <p>2024年1月1日</p>
+            <p>1.修改文字</p>
+            <p>2.修改开学信息</p>
+            <p>3.修改视频预告</p>
+            <p>4.修改已知Bug</p>
+        </div>
+        <p>Bug反馈:1799815043(QQ)</p>
+        <h2>最新一期视频预告</h2>
         <p>新年特辑(实在没啥素材了)</p>
-        <h2>其他就没啦<h2>
-        <p>要寒假了，视频尽量一周一更更新qwq<p>
-        <h1>版权信息</h1>
-        <p>Copyright 2019-2023 ZSF Studio,ZSF Team </p>
-        <p>其实代码全是ZSF Studio一人敲的，感谢群友们提供pr</p>    
-        <p>由Github.com提供支持</p>    
-            
-    
-
+        <h2>其他就没啦</h2>
+        <p>要寒假了，视频尽量一周一更更新qwq</p>
+    </div>
+    <div id="footer">
+        <h3>版权信息</h3>
+        <p>Copyright 2019-2024 ZSF Studio, ZSF Team </p>
+        <p>其实代码全是ZSF Studio一人敲的，感谢群友们提供pr</p>
+        <p>
+            由Github.com提供支持。
+            <a href="https://github.com/ZSFTeam/zsfteam.github.io">View it on Github</a>
+        </p>
     </div>
 </body>
 
@@ -114,7 +125,16 @@
         border-radius: 100%;
         margin-left: auto;
         margin-right: auto;
+        position: relative;
         animation: imageAppear 1s 1;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px, rgba(0, 0, 0, 0.2) 0 1px 2px;
+        z-index: 1;
+        transition: all 0.25s;
+    }
+
+    #logo.onmove {
+        transition: box-shadow 0.25s;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 4px 24px, rgba(0, 0, 0, 0.4) 0 2px 8px;
     }
 
     @keyframes imageAppear {
@@ -126,9 +146,14 @@
 
         100% {
             opacity: 1;
-            width: 1;
-            height: 1;
         }
+    }
+
+    audio {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2em;
     }
 
     #contentContainer {
@@ -138,12 +163,96 @@
         margin-right: auto;
         border-radius: 5px;
         padding: 2em;
+        margin-bottom: 2em;
         box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px, rgba(0, 0, 0, 0.2) 0 1px 2px;
+    }
+
+    #button-showHistory {
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    #button-showHistory>div {
+        display: inline-block;
+    }
+
+    #icon-showHistory {
+        width: 1em;
+        height: 1em;
+        display: inline-block;
+        vertical-align: bottom;
+        padding: calc((1lh - 1em) / 2);
+        transform: rotate(-90deg);
+        transition: all 0.25s;
+    }
+
+    #button-showHistory:hover>#icon-showHistory {
+        margin-left: 0.5em;
+    }
+
+    #button-showHistory.active>#icon-showHistory {
+        transform: unset;
+    }
+
+    #history {
+        visibility: hidden;
+        opacity: 0;
+        font-size: 0;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    #button-showHistory.active+#history {
+        font-size: unset;
+        opacity: 1;
+        visibility: visible;
     }
 
     #title>div {
         display: inline-block;
     }
+
+    #footer {
+        text-align: center;
+        color: #555;
+    }
 </style>
+
+<script>
+    function showHistory(e) {
+        if (e.classList.contains("active")) {
+            e.classList.remove("active");
+            return;
+        }
+        e.classList.add("active");
+    }
+</script>
+<script>
+    var isMouseDown, initX, initY, target;
+
+    function logoOnMouseDown(e) {
+        initX = e.clientX;
+        initY = e.clientY;
+        target = e.target;
+        target.classList.add("onmove");
+        isMouseDown = true;
+    }
+
+    function logoOnMouseUp(e) {
+        e.target.classList.remove("onmove");
+        e.target.style.left = 0;
+        e.target.style.top = 0;
+        isMouseDown = false;
+    }
+    document.addEventListener("mouseup", function (e) {
+        isMouseDown = false;
+    });
+    document.addEventListener("mousemove", function (e) {
+        if (isMouseDown) {
+            target.style.left = e.clientX - initX + 'px';
+            target.style.top = e.clientY - initY + 'px';
+        }
+    });
+</script>
 
 </html>
