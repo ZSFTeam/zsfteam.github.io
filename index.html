@@ -32,7 +32,10 @@
         <a href="https://jq.qq.com/?_wv=1027&k=ObuR2ZC2">加入QQ群</a>
         <h2>联系我们</h2>
         <a href="mailto:zsfteam@outlook.com">发送邮件到ZSF的 zsfteam@outlook.com</a>
-        <h4>也可以直接在QQ群中联系</h4>  
+        <h4>也可以直接在QQ群中联系</h4> 
+        <h2>Discord</h2>
+        <h4>ps:请翻墙后使用哈~</h4>
+        <iframe src="https://discordapp.com/widget?id=1291726522385956987&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe> 
         <h2>网站更新历史</h2>
         <div id="button-showHistory" onclick="showHistory(this)">
             <div>ZSF Team网站更新历史</div>
@@ -99,13 +102,16 @@
             <p>4.新加入视频推荐</p>
             <p>5.修复了些小bug+外观问题</p>
             <p>6.删除音频接口</p>
+            <p>2024年10月5日</p>
+            <p>1.增加ZSF Team Discord分群+网站discord在线(翻墙使用)</p>
+            <p>2.增加本站正常运行时间</p>
         </div>
         <p>Bug反馈:904496606(QQ群)</p>
         <p>也可以在1799815043，1527163585反馈</p>
     </div>
     <div id="footer">
         <p>2021-2024 ZSF Team </p>
-        <p>网站主要贡献者:ZSF Studio,kqakqakqa,耀阳,星辰大海ZSF</p>
+        <p>网站主要贡献者:ZSFStudio,kqakqakqa,耀阳,星辰大海ZSF</p>
         <p>
 
             <a href="https://github.com/ZSFTeam/zsfteam.github.io">管理员入口</a>
@@ -267,8 +273,34 @@
     });
     
 </script>
-
-
+<span id="runtimeSpan" style="color: #ff0000;"></span>
+<script type="text/javascript">
+    function showRuntime(){
+        window.setTimeout("showRuntime()", 1000);
+        var startTime = new Date("1/15/2021 00:00:00"); 
+        var nowTime = new Date();
+        var timestamp = (nowTime.getTime() - startTime.getTime());
+        var oneDayMilliseconds = 24*60*60*1000;
+        var totalDaysTmp = timestamp / oneDayMilliseconds;
+        var totalDays = Math.floor(totalDaysTmp);
+        var yuHoursTmp = (totalDaysTmp - totalDays) * 24;
+        var yuHours = Math.floor(yuHoursTmp);
+        var yuMinutesTmp = (yuHoursTmp - yuHours) * 60;
+        var yuMinutes = Math.floor((yuHoursTmp - yuHours) * 60);
+        var yuSeconds = Math.floor((yuMinutesTmp - yuMinutes) * 60);
+        var yuHours = yuHours < 10 ? '0' + yuHours : yuHours;
+        var yuMinutes = yuMinutes < 10 ? '0' + yuMinutes : yuMinutes;
+        var yuSeconds = yuSeconds < 10 ? '0' + yuSeconds : yuSeconds;
+        runtimeSpan.innerHTML = "本站已安全运行: " + totalDays + "天" + yuHours + "小时" + yuMinutes + "分" + yuSeconds + "秒";
+    }
+    showRuntime();
+</script>
+<style>
+    #runtimeSpan{animation: change 10s infinite;font-weight: 800;}
+    @keyframes change{0%{color:#AAC9CE;}25%{color:#F56A79;}50%{color:#1AA6B7;}75%{color:#FCF9F0;}100%{color:#E73B3E;}}
+</style>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 
 
 
