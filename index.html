@@ -2,307 +2,440 @@
 <html lang="zh-Hans">
 
 <head>
-
-    
     <meta charset="UTF-8" name="viewport" content="width=device-width" />
-    <title>ZSF Team</title>
+    <title>ZSF Team - 创新科技团队</title>
     <link rel="shortcut icon" href="resources/logo.webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1AA6B7;
+            --secondary-color: #F56A79;
+            --dark-color: #002D40;
+            --light-color: #FCF9F0;
+            --gray-color: #AAC9CE;
+        }
+
+        body {
+            background: rgb(242, 251, 255);
+            padding-top: 80px;
+            padding-bottom: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
+            margin: 0;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        #logo {
+            display: block;
+            border-radius: 100%;
+            margin: 0 auto 30px;
+            position: relative;
+            animation: imageAppear 1s 1;
+            box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px, rgba(0, 0, 0, 0.2) 0 1px 2px;
+            z-index: 1;
+            transition: all 0.25s;
+            cursor: move;
+        }
+
+        #logo.onmove {
+            transition: box-shadow 0.25s;
+            box-shadow: rgba(0, 0, 0, 0.2) 0 4px 24px, rgba(0, 0, 0, 0.4) 0 2px 8px;
+        }
+
+        @keyframes imageAppear {
+            0% {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        #title {
+            text-align: center;
+            font-weight: lighter;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--dark-color);
+        }
+
+        #title > div {
+            display: block;
+            line-height: 1.3;
+        }
+
+        #contentContainer {
+            background: #fff;
+            max-width: 130vmin;
+            margin: 0 auto 30px;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px, rgba(0, 0, 0, 0.2) 0 1px 2px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--gray-color);
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--dark-color);
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        #button-showHistory {
+            cursor: pointer;
+            display: inline-block;
+            margin: 15px 0;
+        }
+
+        #button-showHistory > div {
+            display: inline-block;
+        }
+
+        #icon-showHistory {
+            width: 1em;
+            height: 1em;
+            display: inline-block;
+            vertical-align: bottom;
+            padding: calc((1lh - 1em) / 2);
+            transform: rotate(-90deg);
+            transition: all 0.25s;
+        }
+
+        #button-showHistory:hover > #icon-showHistory {
+            margin-left: 0.5em;
+        }
+
+        #button-showHistory.active > #icon-showHistory {
+            transform: unset;
+        }
+
+        #history {
+            visibility: hidden;
+            opacity: 0;
+            font-size: 0;
+            overflow: hidden;
+            transition: all 0.25s;
+            padding-left: 20px;
+            border-left: 3px solid var(--gray-color);
+        }
+
+        #button-showHistory.active + #history {
+            font-size: unset;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #footer {
+            text-align: center;
+            color: #555;
+            padding: 20px 0;
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        #runtimeSpan {
+            animation: change 10s infinite;
+            font-weight: 800;
+            display: block;
+            margin: 10px 0;
+        }
+
+        @keyframes change {
+            0% { color: #AAC9CE; }
+            25% { color: #F56A79; }
+            50% { color: #1AA6B7; }
+            75% { color: #FCF9F0; }
+            100% { color: #E73B3E; }
+        }
+
+        .discord-widget {
+            margin: 20px 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            #title {
+                font-size: 2em;
+            }
+            
+            #contentContainer {
+                padding: 20px;
+            }
+            
+            #logo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <img id="logo" alt="ZSF Team Logo" src="resources/logo1.webp" draggable="false" width="200" height="200"
-        onmousedown="logoOnMouseDown(event)" onmouseup="logoOnMouseUp(event)" />
-    <h1 id="title">
-        <div>欢迎来到</div>
-        <div>ZSF Team官方网站！</div>
+    <div class="container">
+        <img id="logo" alt="ZSF Team Logo" src="resources/logo1.webp" draggable="false" width="200" height="200"
+            onmousedown="logoOnMouseDown(event)" onmouseup="logoOnMouseUp(event)" />
         
-        <script  color="255,182,193" opacity='1' zIndex="-1" count="100" src="https://cdn.bootcss.com/canvas-nest.js/2.0.4/canvas-nest.js" type="text/javascript"></script>
-    </h1>
-    <div id="contentContainer">
-        <h2>推荐视频</h2>
-        <p><a href="https://www.bilibili.com/video/BV1si421Y7Zb/">Windows最实用的功能，或许是这个不显眼的工具</a></p>
-        <p><a href="https://www.bilibili.com/video/BV1KapreCE1v/">曾经引以为傲，现在半死不活【Windows磁贴消亡史】</a></p>
-        <h2>关于我们</h2>
-        <p>ZSF Team: 一个成员分布在五湖四海的小团队</p>
-        <h2>查看B站个人空间</h2>
-        <p><a href="https://space.bilibili.com/626275698">@星辰大海ZSF</a></p>
-        <p><a href="https://space.bilibili.com/1440461920">@ZSFStudio</a></p>
-        <p><b>你的支持是我们更新的最大动力！</b></p>
-        <h2>支持</h2>
-        <p>在QQ群中可以讨论，有关ZSF Team的任何问题</p>
-        <a href="https://jq.qq.com/?_wv=1027&k=ObuR2ZC2">加入QQ群</a>
-        <h2>联系我们</h2>
-        <a href="mailto:zsfteam@outlook.com">发送邮件到星辰大海ZSF的邮箱</a>
-        <h4>也可以直接在QQ群中与我们联系</h4> 
-        <h2>Discord</h2>
-        <h4>ps:请在开启加速器或使用其他方式后，使用Discord以及相关服务哈~</h4>
-        <iframe src="https://discordapp.com/widget?id=1291726522385956987&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe> 
-        <h2>网站更新历史</h2>
-        <div id="button-showHistory" onclick="showHistory(this)">
-            <div>ZSF Team网站更新历史</div>
-            <svg id="icon-showHistory" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:svg="http://www.w3.org/2000/svg">
-                <path fill="#000"
-                    d="m 901.59787,293.0688 a 68.266667,68.266667 0 0 1 0,96.52907 L 560.26453,730.9312 a 68.266667,68.266667 0 0 1 -96.52906,0 L 122.40213,389.59787 A 68.266667,68.266667 0 1 1 218.9312,293.0688 L 512,586.1376 805.0688,293.0688 a 68.266667,68.266667 0 0 1 96.52907,0 z" />
-            </svg>
+        <h1 id="title">
+            <div>欢迎来到</div>
+            <div>ZSF Team官方网站！</div>
+        </h1>
+
+        <div class="social-links">
+            <a href="https://space.bilibili.com/626275698" target="_blank" title="B站"><i class="fab fa-bilibili"></i></a>
+            <a href="https://github.com/ZSFTeam" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" onclick="alert('请翻墙后使用Discord')" title="Discord"><i class="fab fa-discord"></i></a>
         </div>
-        <div id="history">
-            <p>1月15日</p>
-            <p>1.网页成立</p>
-            <p>1月16日</p>
-            <p>1.更新UI平滑界面</p>
-            <p>2.适配夜间插件</p>
-            <p>3.增加邮件功能</p>
-            <p>4.团队图片增加</p>
-            <p>5.修复已知问题</p>
-            <p>1月17日</p>
-            <p>1.加入更新历史</p>
-            <p>2.修复问题</p>
-            <p>3.修改字体</p>
-            <p>4.修改文字</p>
-            <p>1月18日</p>
-            <p>1.加入视频预告</p>
-            <p>2.加入版权</p>
-            <p>1月21日</p>
-            <p>1.删除登录功能</p>
-            <p>2.增加字符</p>
-            <p>2月5日</p>
-            <p>1.更改视频预告</p>
-            <p>2.增加开学提示</p>
-            <p>3.修复网站小BUG</p>
-            <p>4.更新版权信息和加群文字</p>
-            <p>10月28日</p>
-            <p>1.增加音乐</p>
-            <p>2.更改创作者列表</p>
-            <p>3.更新版权信息</p>
-            <p>4.修改开学信息</p>
-            <p>5.修改视频预告</p>
-            <p>6.修改已知Bug</p>
-            <p>2024年1月1日</p>
-            <p>1.修改文字</p>
-            <p>2.修改开学信息</p>
-            <p>3.修改视频预告</p>
-            <p>4.修改已知Bug</p>
-            <p>2024年6日和7日</p>
-            <p>1.增加logo可移动性（感谢耀阳）</p>
-            <p>2.更改邮箱地址</p>
-            <p>3.更新音乐格式</p>
-            <p>4.加入view in github</p>
-            <p>5.修改视频预告</p>
-            <p>6.修改文字</p>
-            <p>7.从zzxpppp.github.io迁移至zsfteam.github.io</p>
-            <p>8.修复已知问题</p>
-            <p>9.Bug反馈新增</p>
-            <h5>这也算一次大更新了QWQ</h5>
-            <p>2024年1月9日</p>
-            <p>1.更新文字(解释一下没有做太多的原因，ZSFStudio在学校机房做的qwq)</p>  
-            <p>2024年7月19日</p>
-            <p>1.更新部分文字</p>
-            <p>2.删除了一些作者</p>
-            <p>3.删除视频预告+其他文字</p>
-            <p>4.新加入视频推荐</p>
-            <p>5.修复了些小bug+外观问题</p>
-            <p>6.删除音频接口</p>
-            <p>2024年10月5日</p>
-            <p>1.增加ZSF Team Discord分群+网站discord在线(翻墙使用)</p>
-            <p>2.增加本站正常运行时间</p>
+
+        <div id="contentContainer">
+            <h2>推荐视频</h2>
+            <p><a href="https://www.bilibili.com/video/BV1si421Y7Zb/" target="_blank">Windows最实用的功能，或许是这个不显眼的工具（Win11/10可用）</a></p>
+            
+            <h2>关于我们</h2>
+            <p>ZSF Team: 一个成员分布在五湖四海的小团队，专注于技术创新和知识分享。</p>
+            
+            <h2>B站个人空间</h2>
+            <p><a href="https://space.bilibili.com/626275698" target="_blank">@星辰大海ZSF</a></p>
+            <p><a href="https://space.bilibili.com/1440461920" target="_blank">@ZSFStudio</a></p>
+            <p><b>你的支持是我们更新的最大动力！</b></p>
+            
+            <h2>支持</h2>
+            <p>对于ZSF Team的任何问题，可以在QQ群中提出</p>
+            <a href="https://jq.qq.com/?_wv=1027&k=ObuR2ZC2" class="btn" target="_blank">加入QQ群</a>
+            
+            <h2>联系我们</h2>
+            <a href="mailto:zsfteam@outlook.com" class="btn">发送邮件到 zsfteam@outlook.com</a>
+            <p>也可以直接在QQ群中联系</p> 
+            
+            <h2>Discord</h2>
+            <p><small>请翻墙后使用</small></p>
+            <div class="discord-widget">
+                <iframe src="https://discordapp.com/widget?id=1291726522385956987&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            </div>
+            
+            <h2>网站更新历史</h2>
+            <div id="button-showHistory" onclick="showHistory(this)">
+                <div>ZSF Team网站更新历史</div>
+                <svg id="icon-showHistory" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:svg="http://www.w3.org/2000/svg">
+                    <path fill="#000"
+                        d="m 901.59787,293.0688 a 68.266667,68.266667 0 0 1 0,96.52907 L 560.26453,730.9312 a 68.266667,68.266667 0 0 1 -96.52906,0 L 122.40213,389.59787 A 68.266667,68.266667 0 1 1 218.9312,293.0688 L 512,586.1376 805.0688,293.0688 a 68.266667,68.266667 0 0 1 96.52907,0 z" />
+                </svg>
+            </div>
+            <div id="history">
+                <p><strong>1月15日</strong></p>
+                <p>1.网页成立</p>
+                <p><strong>1月16日</strong></p>
+                <p>1.更新UI平滑界面</p>
+                <p>2.适配夜间插件</p>
+                <p>3.增加邮件功能</p>
+                <p>4.团队图片增加</p>
+                <p>5.修复已知问题</p>
+                <p><strong>1月17日</strong></p>
+                <p>1.加入更新历史</p>
+                <p>2.修复问题</p>
+                <p>3.修改字体</p>
+                <p>4.修改文字</p>
+                <p><strong>1月18日</strong></p>
+                <p>1.加入视频预告</p>
+                <p>2.加入版权</p>
+                <p><strong>1月21日</strong></p>
+                <p>1.删除登录功能</p>
+                <p>2.增加字符</p>
+                <p><strong>2月5日</strong></p>
+                <p>1.更改视频预告</p>
+                <p>2.增加开学提示</p>
+                <p>3.修复网站小BUG</p>
+                <p>4.更新版权信息和加群文字</p>
+                <p><strong>10月28日</strong></p>
+                <p>1.增加音乐</p>
+                <p>2.更改创作者列表</p>
+                <p>3.更新版权信息</p>
+                <p>4.修改开学信息</p>
+                <p>5.修改视频预告</p>
+                <p>6.修改已知Bug</p>
+                <p><strong>2024年1月1日</strong></p>
+                <p>1.修改文字</p>
+                <p>2.修改开学信息</p>
+                <p>3.修改视频预告</p>
+                <p>4.修改已知Bug</p>
+                <p><strong>2024年6日和7日</strong></p>
+                <p>1.增加logo可移动性（感谢耀阳）</p>
+                <p>2.更改邮箱地址</p>
+                <p>3.更新音乐格式</p>
+                <p>4.加入view in github</p>
+                <p>5.修改视频预告</p>
+                <p>6.修改文字</p>
+                <p>7.从zzxpppp.github.io迁移至zsfteam.github.io</p>
+                <p>8.修复已知问题</p>
+                <p>9.Bug反馈新增</p>
+                <h5>这也算一次大更新了QWQ</h5>
+                <p><strong>2024年1月9日</strong></p>
+                <p>1.更新文字(解释一下没有做太多的原因，ZSFStudio在学校机房做的qwq)</p>  
+                <p><strong>2024年7月19日</strong></p>
+                <p>1.更新部分文字</p>
+                <p>2.删除了一些作者</p>
+                <p>3.删除视频预告+其他文字</p>
+                <p>4.新加入视频推荐</p>
+                <p>5.修复了些小bug+外观问题</p>
+                <p>6.删除音频接口</p>
+                <p><strong>2024年10月5日</strong></p>
+                <p>1.增加ZSF Team Discord分群+网站discord在线(翻墙使用)</p>
+                <p>2.增加本站正常运行时间</p>
+            </div>
+            
+            <p>Bug反馈: <a href="https://jq.qq.com/?_wv=1027&k=ObuR2ZC2" target="_blank">904496606(QQ群)</a></p>
+            <p>也可以在1799815043，1527163585反馈</p>
         </div>
-        <p>Bug反馈:904496606(QQ群)</p>
-        <p>也可以在1799815043，1527163585反馈</p>
+
+        <span id="runtimeSpan"></span>
+        <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+
+        <div id="footer">
+            <p>2021-2024 ZSF Team </p>
+            <p>网站主要贡献者: ZSFStudio, kqakqakqa, 耀阳, 星辰大海ZSF</p>
+            <p><a href="https://github.com/ZSFTeam/zsfteam.github.io" target="_blank">管理员入口</a></p>
+        </div>
     </div>
-    <div id="footer">
-        <p>2021-2024 ZSF Team </p>
-        <p>网站贡献者:ZSFStudio,kqakqakqa,星辰大海ZSF,耀阳,</p>
-        <p>
 
-            <a href="https://github.com/ZSFTeam/zsfteam.github.io">管理员入口</a>
-        </p>
-    </div>
-</body>
-
-
-
-
-<style>
-    body {
-        background: rgb(242, 251, 255);
-        padding-top: 50px;
-        padding-bottom: 8px;
-        padding-left: 8px;
-        padding-right: 8px;
-        margin: 0;
-    }
-
-    #title {
-        text-align: center;
-        font-weight: lighter;
-        font-size: 3em;
-    }
-
-    #logo {
-        display: block;
-        border-radius: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
-        animation: imageAppear 1s 1;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px, rgba(0, 0, 0, 0.2) 0 1px 2px;
-        z-index: 1;
-        transition: all 0.25s;
-    }
-
-    #logo.onmove {
-        transition: box-shadow 0.25s;
-        box-shadow: rgba(0, 0, 0, 0.2) 0 4px 24px, rgba(0, 0, 0, 0.4) 0 2px 8px;
-    }
-
-    @keyframes imageAppear {
-        0% {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        100% {
-            opacity: 1;
-        }
-    }
-
-    audio {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 2em;
-    }
-
-    #contentContainer {
-        background: #fff;
-        max-width: 130vmin;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 5px;
-        padding: 2em;
-        margin-bottom: 2em;
-        box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px, rgba(0, 0, 0, 0.2) 0 1px 2px;
-    }
-
-    #button-showHistory {
-        cursor: pointer;
-        display: inline-block;
-    }
-
-    #button-showHistory>div {
-        display: inline-block;
-    }
-
-    #icon-showHistory {
-        width: 1em;
-        height: 1em;
-        display: inline-block;
-        vertical-align: bottom;
-        padding: calc((1lh - 1em) / 2);
-        transform: rotate(-90deg);
-        transition: all 0.25s;
-    }
-
-    #button-showHistory:hover>#icon-showHistory {
-        margin-left: 0.5em;
-    }
-
-    #button-showHistory.active>#icon-showHistory {
-        transform: unset;
-    }
-
-    #history {
-        visibility: hidden;
-        opacity: 0;
-        font-size: 0;
-        overflow: hidden;
-        transition: all 0.25s;
-    }
-
-    #button-showHistory.active+#history {
-        font-size: unset;
-        opacity: 1;
-        visibility: visible;
-    }
-
-    #title>div {
-        display: inline-block;
-    }
-
-    #footer {
-        text-align: center;
-        color: #555;
-    }
-</style>
-
-<script>
-    function showHistory(e) {
-        if (e.classList.contains("active")) {
-            e.classList.remove("active");
-            return;
-        }
-        e.classList.add("active");
-    }
-</script>
-<script>
-    var isMouseDown, initX, initY, target;
-
-    function logoOnMouseDown(e) {
-        initX = e.clientX;
-        initY = e.clientY;
-        target = e.target;
-        target.classList.add("onmove");
-        isMouseDown = true;
-    }
-
-    function logoOnMouseUp(e) {
-        e.target.classList.remove("onmove");
-        e.target.style.left = 0;
-        e.target.style.top = 0;
-        isMouseDown = false;
-    }
-    document.addEventListener("mouseup", function (e) {
-        isMouseDown = false;
-    });
-    document.addEventListener("mousemove", function (e) {
-        if (isMouseDown) {
-            target.style.left = e.clientX - initX + 'px';
-            target.style.top = e.clientY - initY + 'px';
-        }
-    });
+    <script color="255,182,193" opacity='1' zIndex="-1" count="100" src="https://cdn.bootcss.com/canvas-nest.js/2.0.4/canvas-nest.js" type="text/javascript"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
-</script>
-<span id="runtimeSpan" style="color: #ff0000;"></span>
-<script type="text/javascript">
-    function showRuntime(){
-        window.setTimeout("showRuntime()", 1000);
-        var startTime = new Date("1/15/2021 00:00:00"); 
-        var nowTime = new Date();
-        var timestamp = (nowTime.getTime() - startTime.getTime());
-        var oneDayMilliseconds = 24*60*60*1000;
-        var totalDaysTmp = timestamp / oneDayMilliseconds;
-        var totalDays = Math.floor(totalDaysTmp);
-        var yuHoursTmp = (totalDaysTmp - totalDays) * 24;
-        var yuHours = Math.floor(yuHoursTmp);
-        var yuMinutesTmp = (yuHoursTmp - yuHours) * 60;
-        var yuMinutes = Math.floor((yuHoursTmp - yuHours) * 60);
-        var yuSeconds = Math.floor((yuMinutesTmp - yuMinutes) * 60);
-        var yuHours = yuHours < 10 ? '0' + yuHours : yuHours;
-        var yuMinutes = yuMinutes < 10 ? '0' + yuMinutes : yuMinutes;
-        var yuSeconds = yuSeconds < 10 ? '0' + yuSeconds : yuSeconds;
-        runtimeSpan.innerHTML = "本站已安全运行: " + totalDays + "天" + yuHours + "小时" + yuMinutes + "分" + yuSeconds + "秒";
-    }
-    showRuntime();
-</script>
-<style>
-    #runtimeSpan{animation: change 10s infinite;font-weight: 800;}
-    @keyframes change{0%{color:#AAC9CE;}25%{color:#F56A79;}50%{color:#1AA6B7;}75%{color:#FCF9F0;}100%{color:#E73B3E;}}
-</style>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <script>
+        // 显示/隐藏更新历史
+        function showHistory(e) {
+            if (e.classList.contains("active")) {
+                e.classList.remove("active");
+                return;
+            }
+            e.classList.add("active");
+        }
 
+        // Logo拖动功能
+        var isMouseDown, initX, initY, target;
 
+        function logoOnMouseDown(e) {
+            initX = e.clientX;
+            initY = e.clientY;
+            target = e.target;
+            target.classList.add("onmove");
+            isMouseDown = true;
+        }
 
+        function logoOnMouseUp(e) {
+            e.target.classList.remove("onmove");
+            isMouseDown = false;
+        }
+        
+        document.addEventListener("mouseup", function (e) {
+            isMouseDown = false;
+        });
+        
+        document.addEventListener("mousemove", function (e) {
+            if (isMouseDown) {
+                const logo = document.getElementById('logo');
+                const rect = logo.getBoundingClientRect();
+                const containerRect = document.querySelector('.container').getBoundingClientRect();
+                
+                let newX = e.clientX - initX;
+                let newY = e.clientY - initY;
+                
+                // 限制拖动范围
+                const maxX = containerRect.width / 2 - rect.width / 2;
+                const maxY = containerRect.height / 2 - rect.height / 2;
+                
+                newX = Math.max(-maxX, Math.min(newX, maxX));
+                newY = Math.max(-maxY, Math.min(newY, maxY));
+                
+                target.style.transform = `translate(${newX}px, ${newY}px)`;
+            }
+        });
+
+        // 运行时间显示
+        function showRuntime() {
+            window.setTimeout("showRuntime()", 1000);
+            var startTime = new Date("1/15/2021 00:00:00"); 
+            var nowTime = new Date();
+            var timestamp = (nowTime.getTime() - startTime.getTime());
+            var oneDayMilliseconds = 24*60*60*1000;
+            var totalDaysTmp = timestamp / oneDayMilliseconds;
+            var totalDays = Math.floor(totalDaysTmp);
+            var yuHoursTmp = (totalDaysTmp - totalDays) * 24;
+            var yuHours = Math.floor(yuHoursTmp);
+            var yuMinutesTmp = (yuHoursTmp - yuHours) * 60;
+            var yuMinutes = Math.floor((yuHoursTmp - yuHours) * 60);
+            var yuSeconds = Math.floor((yuMinutesTmp - yuMinutes) * 60);
+            var yuHours = yuHours < 10 ? '0' + yuHours : yuHours;
+            var yuMinutes = yuMinutes < 10 ? '0' + yuMinutes : yuMinutes;
+            var yuSeconds = yuSeconds < 10 ? '0' + yuSeconds : yuSeconds;
+            
+            var runtimeSpan = document.getElementById('runtimeSpan');
+            if (runtimeSpan) {
+                runtimeSpan.innerHTML = "本站已安全运行: " + totalDays + "天" + yuHours + "小时" + yuMinutes + "分" + yuSeconds + "秒";
+            }
+        }
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            showRuntime();
+            
+            // 为外部链接添加target="_blank"
+            document.querySelectorAll('a').forEach(link => {
+                if (link.hostname !== window.location.hostname && !link.getAttribute('target')) {
+                    link.setAttribute('target', '_blank');
+                    link.setAttribute('rel', 'noopener noreferrer');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
