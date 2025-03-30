@@ -2,273 +2,499 @@
 <html lang="zh-Hans">
 
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZSF Team - 创新科技团队</title>
+    <meta name="description" content="ZSF Team官方网站，分享技术成果和创新项目">
     <link rel="shortcut icon" href="resources/logo.webp">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #1AA6B7;
-            --secondary-color: #F56A79;
-            --dark-color: #002D40;
-            --light-color: #FCF9F0;
-            --gray-color: #AAC9CE;
+            --primary: #1AA6B7;
+            --primary-dark: #0E7C86;
+            --secondary: #F56A79;
+            --dark: #002D40;
+            --light: #FCF9F0;
+            --gray: #AAC9CE;
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            background: rgb(242, 251, 255);
-            padding-top: 80px;
-            padding-bottom: 8px;
-            padding-left: 8px;
-            padding-right: 8px;
-            margin: 0;
             font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
             line-height: 1.6;
             color: #333;
+            background-color: #f5f9fa;
+            padding-top: 90px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
+        }
+
+        /* 头部样式 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
 
         #logo {
-            display: block;
-            border-radius: 100%;
-            margin: 0 auto 30px;
-            position: relative;
-            animation: imageAppear 1s 1;
-            box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px, rgba(0, 0, 0, 0.2) 0 1px 2px;
-            z-index: 1;
-            transition: all 0.25s;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             cursor: move;
         }
 
-        #logo.onmove {
-            transition: box-shadow 0.25s;
-            box-shadow: rgba(0, 0, 0, 0.2) 0 4px 24px, rgba(0, 0, 0, 0.4) 0 2px 8px;
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark);
         }
 
-        @keyframes imageAppear {
-            0% {
-                opacity: 0;
-                width: 0;
-                height: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+        /* 导航菜单 */
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* 主要内容 */
+        .hero {
+            text-align: center;
+            padding: 60px 0 40px;
         }
 
         #title {
-            text-align: center;
-            font-weight: lighter;
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            color: var(--dark-color);
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.3;
         }
 
         #title > div {
             display: block;
-            line-height: 1.3;
         }
 
-        #contentContainer {
-            background: #fff;
-            max-width: 130vmin;
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            max-width: 800px;
             margin: 0 auto 30px;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px, rgba(0, 0, 0, 0.2) 0 1px 2px;
+        }
+
+        .social-links {
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* 内容容器 */
+        #contentContainer {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #contentContainer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
         }
 
         h2 {
-            color: var(--primary-color);
-            margin: 25px 0 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--gray-color);
+            color: var(--primary-dark);
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray);
+            font-size: 1.8rem;
+        }
+
+        h2:first-child {
+            margin-top: 0;
         }
 
         p {
             margin-bottom: 15px;
+            line-height: 1.7;
         }
 
         a {
-            color: var(--primary-color);
+            color: var(--primary);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         a:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
+            color: var(--secondary);
         }
 
-        .social-links {
-            margin: 20px 0;
-        }
-
-        .social-links a {
-            display: inline-block;
-            margin-right: 15px;
-            font-size: 1.2em;
-        }
-
+        /* 按钮样式 */
         .btn {
-            display: inline-block;
-            padding: 8px 20px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 25px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
             margin: 5px 0;
-            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .btn:hover {
-            background: var(--dark-color);
-            text-decoration: none;
+            background: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
         }
 
+        .btn i {
+            margin-right: 8px;
+        }
+
+        /* 更新历史 */
         #button-showHistory {
             cursor: pointer;
-            display: inline-block;
-            margin: 15px 0;
+            display: inline-flex;
+            align-items: center;
+            margin: 20px 0;
+            color: var(--primary);
+            font-weight: 500;
+            transition: var(--transition);
         }
 
-        #button-showHistory > div {
-            display: inline-block;
+        #button-showHistory:hover {
+            color: var(--secondary);
         }
 
         #icon-showHistory {
-            width: 1em;
-            height: 1em;
-            display: inline-block;
-            vertical-align: bottom;
-            padding: calc((1lh - 1em) / 2);
-            transform: rotate(-90deg);
-            transition: all 0.25s;
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+            transition: var(--transition);
         }
 
-        #button-showHistory:hover > #icon-showHistory {
-            margin-left: 0.5em;
-        }
-
-        #button-showHistory.active > #icon-showHistory {
-            transform: unset;
+        #button-showHistory.active #icon-showHistory {
+            transform: rotate(180deg);
         }
 
         #history {
-            visibility: hidden;
-            opacity: 0;
-            font-size: 0;
+            max-height: 0;
             overflow: hidden;
-            transition: all 0.25s;
+            transition: max-height 0.3s ease, padding 0.3s ease;
             padding-left: 20px;
-            border-left: 3px solid var(--gray-color);
+            border-left: 3px solid var(--gray);
         }
 
         #button-showHistory.active + #history {
-            font-size: unset;
+            max-height: 2000px;
+            padding: 10px 0 10px 20px;
+        }
+
+        #history p {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        #history p::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        #history p strong {
+            color: var(--dark);
+        }
+
+        /* Discord小部件 */
+        .discord-widget {
+            margin: 25px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        /* 页脚 */
+        #footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .footer-links a {
+            margin: 0 15px;
+            color: #666;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* 运行时间 */
+        #runtimeSpan {
+            display: block;
+            margin: 15px 0;
+            font-weight: 600;
+            animation: colorChange 10s infinite;
+        }
+
+        @keyframes colorChange {
+            0% { color: var(--gray); }
+            25% { color: var(--secondary); }
+            50% { color: var(--primary); }
+            75% { color: var(--dark); }
+            100% { color: var(--gray); }
+        }
+
+        /* 访问量 */
+        #busuanzi_container_site_pv {
+            display: block;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
             opacity: 1;
             visibility: visible;
         }
 
-        #footer {
-            text-align: center;
-            color: #555;
-            padding: 20px 0;
-            margin-top: 30px;
-            border-top: 1px solid #eee;
-        }
-
-        #runtimeSpan {
-            animation: change 10s infinite;
-            font-weight: 800;
-            display: block;
-            margin: 10px 0;
-        }
-
-        @keyframes change {
-            0% { color: #AAC9CE; }
-            25% { color: #F56A79; }
-            50% { color: #1AA6B7; }
-            75% { color: #FCF9F0; }
-            100% { color: #E73B3E; }
-        }
-
-        .discord-widget {
-            margin: 20px 0;
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
         }
 
         /* 响应式设计 */
         @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .logo-container {
+                margin-bottom: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0 10px 10px;
+            }
+
             #title {
-                font-size: 2em;
+                font-size: 2rem;
             }
-            
+
             #contentContainer {
-                padding: 20px;
+                padding: 25px;
             }
-            
-            #logo {
-                width: 150px;
-                height: 150px;
+
+            .discord-widget iframe {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #title {
+                font-size: 1.8rem;
+            }
+
+            #contentContainer {
+                padding: 20px 15px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <img id="logo" alt="ZSF Team Logo" src="resources/logo1.webp" draggable="false" width="200" height="200"
-            onmousedown="logoOnMouseDown(event)" onmouseup="logoOnMouseUp(event)" />
-        
-        <h1 id="title">
-            <div>欢迎来到</div>
-            <div>ZSF Team官方网站！</div>
-        </h1>
-
-        <div class="social-links">
-            <a href="https://space.bilibili.com/626275698" target="_blank" title="B站"><i class="fab fa-bilibili"></i></a>
-            <a href="https://github.com/ZSFTeam" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="#" onclick="alert('请翻墙后使用Discord')" title="Discord"><i class="fab fa-discord"></i></a>
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <img id="logo" alt="ZSF Team Logo" src="resources/logo1.webp" draggable="false"
+                    onmousedown="logoOnMouseDown(event)" onmouseup="logoOnMouseUp(event)" />
+                <div class="logo-text">ZSF Team</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about" class="active">关于我们</a></li>
+                <li><a href="#projects">项目展示</a></li>
+                <li><a href="#contact">联系我们</a></li>
+                <li><a href="#history">更新历史</a></li>
+            </ul>
         </div>
+    </header>
 
-        <div id="contentContainer">
-            <h2>推荐视频</h2>
-            <p><a href="https://www.bilibili.com/video/BV1si421Y7Zb/" target="_blank">Windows最实用的功能，或许是这个不显眼的工具（Win11/10可用）</a></p>
+    <main class="container">
+        <section class="hero">
+            <h1 id="title">
+                <div>欢迎来到</div>
+                <div>ZSF Team</div>
+            </h1>
+            <p class="subtitle">一个充满创意与激情的科技团队，分享技术成果和创新项目</p>
             
-            <h2>关于我们</h2>
-            <p>ZSF Team: 一个成员分布在五湖四海的小团队，专注于技术创新和知识分享。</p>
+            <div class="social-links">
+                <a href="https://space.bilibili.com/626275698" target="_blank" title="B站"><i class="fab fa-bilibili"></i></a>
+                <a href="https://github.com/ZSFTeam" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" onclick="alert('请翻墙后使用Discord')" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://jq.qq.com/?_wv=1027&k=ObuR2ZC2" target="_blank" title="QQ群"><i class="fab fa-qq"></i></a>
+            </div>
+        </section>
+
+        <section id="contentContainer">
+            <h2 id="about">关于我们</h2>
+            <p>ZSF Team 是一个由热爱技术的年轻人组成的团队，成员分布在全国各地。我们专注于软件开发、技术创新和知识分享。</p>
+            <p>我们的使命是通过技术创造价值，分享知识，帮助更多人了解和掌握现代科技。</p>
+            
+            <h2 id="projects">推荐视频</h2>
+            <p><a href="https://www.bilibili.com/video/BV1si421Y7Zb/" target="_blank"><i class="fas fa-video"></i> Windows最实用的功能，或许是这个不显眼的工具（Win11/10可用）</a></p>
             
             <h2>B站个人空间</h2>
-            <p><a href="https://space.bilibili.com/626275698" target="_blank">@星辰大海ZSF</a></p>
-            <p><a href="https://space.bilibili.com/1440461920" target="_blank">@ZSFStudio</a></p>
+            <p><a href="https://space.bilibili.com/626275698" target="_blank"><i class="fab fa-bilibili"></i> @星辰大海ZSF</a></p>
+            <p><a href="https://space.bilibili.com/1440461920" target="_blank"><i class="fab fa-bilibili"></i> @ZSFStudio</a></p>
             <p><b>你的支持是我们更新的最大动力！</b></p>
             
-            <h2>支持</h2>
-            <p>对于ZSF Team的任何问题，可以在QQ群中提出</p>
-            <a href="https://jq.qq.com/?_wv=1027&k=ObuR2ZC2" class="btn" target="_blank">加入QQ群</a>
+            <h2 id="contact">支持与反馈</h2>
+            <p>对于ZSF Team的任何问题或建议，欢迎通过以下方式联系我们：</p>
+            <a href="https://jq.qq.com/?_wv=1027&k=ObuR2ZC2" class="btn" target="_blank"><i class="fab fa-qq"></i> 加入QQ群</a>
+            <a href="mailto:zsfteam@outlook.com" class="btn"><i class="fas fa-envelope"></i> 发送邮件</a>
+            <p>Bug反馈: <a href="https://jq.qq.com/?_wv=1027&k=ObuR2ZC2" target="_blank">904496606(QQ群)</a></p>
+            <p>也可以在1799815043，1527163585反馈</p>
             
-            <h2>联系我们</h2>
-            <a href="mailto:zsfteam@outlook.com" class="btn">发送邮件到 zsfteam@outlook.com</a>
-            <p>也可以直接在QQ群中联系</p> 
-            
-            <h2>Discord</h2>
-            <p><small>请翻墙后使用</small></p>
+            <h2>Discord社区</h2>
+            <p><i class="fas fa-info-circle"></i> 请翻墙后使用</p>
             <div class="discord-widget">
                 <iframe src="https://discordapp.com/widget?id=1291726522385956987&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
             </div>
             
-            <h2>网站更新历史</h2>
+            <h2 id="history">网站更新历史</h2>
             <div id="button-showHistory" onclick="showHistory(this)">
-                <div>ZSF Team网站更新历史</div>
-                <svg id="icon-showHistory" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:svg="http://www.w3.org/2000/svg">
-                    <path fill="#000"
-                        d="m 901.59787,293.0688 a 68.266667,68.266667 0 0 1 0,96.52907 L 560.26453,730.9312 a 68.266667,68.266667 0 0 1 -96.52906,0 L 122.40213,389.59787 A 68.266667,68.266667 0 1 1 218.9312,293.0688 L 512,586.1376 805.0688,293.0688 a 68.266667,68.266667 0 0 1 96.52907,0 z" />
+                <span>查看详细更新历史</span>
+                <svg id="icon-showHistory" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="currentColor" d="M901.59787 293.0688a68.266667 68.266667 0 0 1 0 96.52907L560.26453 730.9312a68.266667 68.266667 0 0 1-96.52906 0L122.40213 389.59787A68.266667 68.266667 0 1 1 218.9312 293.0688L512 586.1376 805.0688 293.0688a68.266667 68.266667 0 0 1 96.52907 0z"/>
                 </svg>
             </div>
             <div id="history">
@@ -332,36 +558,39 @@
                 <p>1.增加ZSF Team Discord分群+网站discord在线(翻墙使用)</p>
                 <p>2.增加本站正常运行时间</p>
             </div>
-            
-            <p>Bug反馈: <a href="https://jq.qq.com/?_wv=1027&k=ObuR2ZC2" target="_blank">904496606(QQ群)</a></p>
-            <p>也可以在1799815043，1527163585反馈</p>
-        </div>
+        </section>
 
         <span id="runtimeSpan"></span>
         <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    </main>
 
-        <div id="footer">
-            <p>2021-2024 ZSF Team </p>
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#about">关于我们</a>
+                <a href="#projects">项目展示</a>
+                <a href="#contact">联系我们</a>
+                <a href="https://github.com/ZSFTeam/zsfteam.github.io" target="_blank">管理员入口</a>
+            </div>
+            <p>2021-<span id="currentYear"></span> ZSF Team. 保留所有权利.</p>
             <p>网站主要贡献者: ZSFStudio, kqakqakqa, 耀阳, 星辰大海ZSF</p>
-            <p><a href="https://github.com/ZSFTeam/zsfteam.github.io" target="_blank">管理员入口</a></p>
         </div>
-    </div>
+    </footer>
 
-    <script color="255,182,193" opacity='1' zIndex="-1" count="100" src="https://cdn.bootcss.com/canvas-nest.js/2.0.4/canvas-nest.js" type="text/javascript"></script>
+    <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+    <script color="255,182,193" opacity='1' zIndex="-1" count="100" src="https://cdn.bootcss.com/canvas-nest.js/2.0.4/canvas-nest.js"></script>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
     <script>
         // 显示/隐藏更新历史
         function showHistory(e) {
-            if (e.classList.contains("active")) {
-                e.classList.remove("active");
-                return;
-            }
-            e.classList.add("active");
+            e.classList.toggle("active");
         }
 
         // Logo拖动功能
-        var isMouseDown, initX, initY, target;
+        let isMouseDown = false;
+        let initX, initY, target;
 
         function logoOnMouseDown(e) {
             initX = e.clientX;
@@ -376,15 +605,17 @@
             isMouseDown = false;
         }
         
-        document.addEventListener("mouseup", function (e) {
+        document.addEventListener("mouseup", function() {
             isMouseDown = false;
+            if (target) target.classList.remove("onmove");
         });
         
-        document.addEventListener("mousemove", function (e) {
-            if (isMouseDown) {
+        document.addEventListener("mousemove", function(e) {
+            if (isMouseDown && target) {
                 const logo = document.getElementById('logo');
                 const rect = logo.getBoundingClientRect();
-                const containerRect = document.querySelector('.container').getBoundingClientRect();
+                const container = document.querySelector('.logo-container');
+                const containerRect = container.getBoundingClientRect();
                 
                 let newX = e.clientX - initX;
                 let newY = e.clientY - initY;
@@ -402,31 +633,73 @@
 
         // 运行时间显示
         function showRuntime() {
-            window.setTimeout("showRuntime()", 1000);
-            var startTime = new Date("1/15/2021 00:00:00"); 
-            var nowTime = new Date();
-            var timestamp = (nowTime.getTime() - startTime.getTime());
-            var oneDayMilliseconds = 24*60*60*1000;
-            var totalDaysTmp = timestamp / oneDayMilliseconds;
-            var totalDays = Math.floor(totalDaysTmp);
-            var yuHoursTmp = (totalDaysTmp - totalDays) * 24;
-            var yuHours = Math.floor(yuHoursTmp);
-            var yuMinutesTmp = (yuHoursTmp - yuHours) * 60;
-            var yuMinutes = Math.floor((yuHoursTmp - yuHours) * 60);
-            var yuSeconds = Math.floor((yuMinutesTmp - yuMinutes) * 60);
-            var yuHours = yuHours < 10 ? '0' + yuHours : yuHours;
-            var yuMinutes = yuMinutes < 10 ? '0' + yuMinutes : yuMinutes;
-            var yuSeconds = yuSeconds < 10 ? '0' + yuSeconds : yuSeconds;
+            const startTime = new Date("1/15/2021 00:00:00"); 
+            const nowTime = new Date();
+            const timestamp = nowTime.getTime() - startTime.getTime();
+            const oneDayMilliseconds = 24*60*60*1000;
+            const totalDaysTmp = timestamp / oneDayMilliseconds;
+            const totalDays = Math.floor(totalDaysTmp);
+            const yuHoursTmp = (totalDaysTmp - totalDays) * 24;
+            const yuHours = Math.floor(yuHoursTmp);
+            const yuMinutesTmp = (yuHoursTmp - yuHours) * 60;
+            const yuMinutes = Math.floor(yuMinutesTmp);
+            const yuSeconds = Math.floor((yuMinutesTmp - yuMinutes) * 60);
             
-            var runtimeSpan = document.getElementById('runtimeSpan');
+            const runtimeSpan = document.getElementById('runtimeSpan');
             if (runtimeSpan) {
-                runtimeSpan.innerHTML = "本站已安全运行: " + totalDays + "天" + yuHours + "小时" + yuMinutes + "分" + yuSeconds + "秒";
+                runtimeSpan.textContent = `本站已安全运行: ${totalDays}天${yuHours.toString().padStart(2, '0')}小时${yuMinutes.toString().padStart(2, '0')}分${yuSeconds.toString().padStart(2, '0')}秒`;
             }
+            setTimeout(showRuntime, 1000);
+        }
+        
+        // 返回顶部按钮
+        function handleBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // 平滑滚动
+        function smoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         }
         
         // 页面加载完成后执行
         document.addEventListener('DOMContentLoaded', function() {
+            // 显示当前年份
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // 初始化功能
             showRuntime();
+            smoothScroll();
             
             // 为外部链接添加target="_blank"
             document.querySelectorAll('a').forEach(link => {
@@ -435,7 +708,39 @@
                     link.setAttribute('rel', 'noopener noreferrer');
                 }
             });
+            
+            // 返回顶部按钮事件
+            window.addEventListener('scroll', handleBackToTop);
+            document.getElementById('backToTop').addEventListener('click', scrollToTop);
+            
+            // 初始化滚动位置以激活导航菜单项
+            handleNavHighlight();
+            window.addEventListener('scroll', handleNavHighlight);
         });
+        
+        // 导航菜单高亮
+        function handleNavHighlight() {
+            const sections = document.querySelectorAll('section, #contentContainer > h2');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const headerHeight = document.querySelector('header').offsetHeight;
+                
+                if (window.scrollY >= sectionTop - headerHeight - 50) {
+                    current = section.getAttribute('id') || '';
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>
